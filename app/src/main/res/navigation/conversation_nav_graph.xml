@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/conversation_nav_graph"
+    app:startDestination="@id/privateConversationListFragment">
+
+    <fragment
+        android:id="@+id/privateConversationListFragment"
+        android:name="com.dm.sample.navigation.ConversationListFragment"
+        android:label="activity_conversation_list"
+        tools:layout="@layout/fragment_conversation_list">
+        <argument
+            android:name="isPrivate"
+            android:defaultValue="true"
+            app:argType="boolean" />
+        <deepLink
+            android:id="@+id/privateDeepLink"
+            app:uri="www.example.com/private" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupConversationListFragment"
+        android:name="com.dm.sample.navigation.ConversationListFragment"
+        android:label="activity_conversation_list"
+        tools:layout="@layout/fragment_conversation_list">
+        <argument
+            android:name="isPrivate"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <deepLink
+            android:id="@+id/groupDeepLink"
+            app:uri="www.example.com/group" />
+    </fragment>
+</navigation>

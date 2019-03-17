@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.dm.sample.navigation.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue="No message" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.example.com/home?message={message}" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.dm.sample.navigation.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_conversationListActivity"
+            app:destination="@id/conversationListActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationListFragment"
+        android:name="com.dm.sample.navigation.NotificationListFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notification_list">
+        <action
+            android:id="@+id/action_notificationListFragment_to_notificationDetailsFragment"
+            app:destination="@id/notificationDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.dm.sample.navigation.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+    <activity
+        android:id="@+id/conversationListActivity"
+        android:name="com.dm.sample.navigation.ConversationListActivity"
+        android:label="activity_conversation_list"
+        tools:layout="@layout/activity_conversation_list" />
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/notificationDetailsFragment"
+        android:name="com.dm.sample.navigation.NotificationDetailsFragment"
+        android:label="@string/title_details"
+        tools:layout="@layout/fragment_notification_details">
+        <argument
+            android:name="notification"
+            app:argType="com.dm.sample.navigation.entity.Notification" />
+    </fragment>
+
+</navigation>
